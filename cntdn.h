@@ -7,7 +7,7 @@
 string ans;
 
 void pshuffle() {
-	printf ("The nine shuffled letters are: %s \n", gen.c_str());
+	cout << "The nine shuffled letters are: " << gen << endl;
 }
 
 void timer(int a) {
@@ -30,6 +30,7 @@ void cntdn() {
 	Sleep (5000);
 	timer(10);
 	system ("cls");
+	cout << (char)(7);
 	printf ("Input your answer (must be in UPPER CASE)\n");
 	cin >> ans;
 }

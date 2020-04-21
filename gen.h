@@ -9,21 +9,25 @@ using namespace std;
 	
 string cons = "BBCCDDDDFFGGGHHJKLLLLMMNNNNNNPPQRRRRRRSSSSTTTTTTVVWWXYYZ";
 string vowel= "AAAAAAAAAEEEEEEEEEEEEIIIIIIIIIOOOOOOOOUUUU";
-string gen= "88888888";
-bool input;
+string gen= "999999999";
+int input;
 int cnt,conscnt,vowelcnt;
 	
 
 void gencons(int& cnt) {
 	srand((time(NULL))*(cnt+1));
-	gen[cnt] = cons[rand() % (cons.length()+1)];
+	gen[cnt] = cons[abs(rand()) % (cons.length())];
+	cout << gen[cnt] << endl;
 	conscnt++;
+	cnt++;
 } 
 
 void genvowel(int& cnt) {
 	srand((time(NULL))*(cnt+1));
-	gen[cnt] = vowel[rand() % (vowel.length()+1)];
+	gen[cnt] = vowel[abs(rand()) % (vowel.length())];
+	cout << gen[cnt] << endl;
 	vowelcnt++;
+	cnt++;
 }
 
 void genm() {
@@ -32,31 +36,21 @@ void genm() {
 	cnt=0;
 	conscnt=0;
 	vowelcnt=0;
-	for (cnt=0; cnt<= 8; cnt++){
-	if (conscnt==6) {
-		for (cnt= vowelcnt+6;cnt <= 8; cnt++) {
+	for (cnt=0; cnt<= 8;){
+		if (conscnt==6) {
 			genvowel(cnt);
 		}
-		goto stop;
-		break;
-	}
-	if (vowelcnt==5) {
-		for (cnt= conscnt+5; cnt <= 8; cnt++) {
+		else if (vowelcnt==5) {
 			gencons(cnt);
 		}
-		goto stop;
-		break;
+		else {
+			printf ("Letter number %d:", cnt+1);
+			cin >> input;
+			if (input == 0) gencons(cnt);
+			else if (input == 1) genvowel(cnt);
+			else continue;
+		}
 	}
-	printf ("Letter number %d:", cnt+1);
-	cin >> input;
-		 switch (input) {
- 			case 0: gencons(cnt);			     	
-					break;
- 			case 1: genvowel(cnt);
-			        break;
- 	     }
-	}
-stop:
 	printf ("\n");
-	printf ("The nine shuffled letters are: %s \n", gen.c_str());
+	cout << "The nine shuffled letters are: " << gen << endl;
 }

@@ -32,14 +32,18 @@ int main () {
 		if (glosans == true) {
 			check (gen,ans);
 		}
-		check (gen,ans);
-		judge(pt,checkans,ans);
+		judge(checkans,ans);
+		if (checkans==1) {
+			if (ans.size()==9) pt+=18;
+			else pt+=ans.size();
+		}
 		printf("Your current score is %d", pt);
 	    Sleep (3000);
 	    system ("cls");
 	    printf ("Press 1 and enter if you want to play another round. \n");
 	    printf ("Press 0 and enter if you want to quit. \n");
 	    cin >> contgame;
-    } while (contgame != 0);
+    } while (contgame);
 	return 0;
 }
+

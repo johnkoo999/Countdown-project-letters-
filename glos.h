@@ -12,18 +12,19 @@ void intxt(string ans) {
 	ifstream myfile;
 	myfile.open ("dictionary");
 	if (myfile.is_open()){
-	while (! myfile.eof() )    {
-		getline (myfile,line);
-		if (ans==line) {
-			glosans=1;
-			cout << "Your answer is found in the glossary.\n";
-			myfile.close();
+		while (! myfile.eof() )    {
+			getline (myfile,line);
+			if (ans==line) {
+				glosans=1;
+				cout << "Your answer is found in the glossary.\n";
+				myfile.close();
+			}
+			else {
+				continue;
+			}
 		}
-		else {
-			continue;
-		}
+	    myfile.close();
 	}
-    myfile.close();
 }
-}
+
 
